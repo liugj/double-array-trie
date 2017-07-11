@@ -1,0 +1,11 @@
+preset: recommended
+
+risky: true
+
+enabled:
+
+disabled:
+
+finder:
+  name: [ "*.php"]
+  exclude : [ "vendor"]
