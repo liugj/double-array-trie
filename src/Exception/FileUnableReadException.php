@@ -13,6 +13,6 @@ namespace Liugj\DoubleArray\Exception;
 
 use Exception;
 
-class FopenException extends Exception
+class FileUnableReadException extends Exception
 {
 }

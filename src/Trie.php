@@ -73,9 +73,15 @@ class Trie
         if (!file_exists($filename)) {
             throw new Exception\FileNotExistsException();
         }
+        if (!is_readable($filename)) {
+            throw new Exception\FileUnableReadException();
+        }
+        if (!is_writable($this->dest)) {
+            throw new Exception\FileUnableWriteException();
+        }
         $fp = fopen($filename, 'r');
         if (!$fp) {
-            throw new Exception\FopenException();
+            throw new Exception\FileOpenException();
         }
 
         $this->tree = trie_filter_new();
