@@ -9,7 +9,7 @@ return [
     |
     */
 
-    'dest' => env('VIEW_COMPILED_PATH', realpath(storage_path('framework/views'))). '/tree', 
+    'dest' => env('VIEW_COMPILED_PATH', realpath(storage_path('framework/views'))). '/tree',
 
     /*
     |--------------------------------------------------------------------------
@@ -20,5 +20,5 @@ return [
     |
     */
 
-    'src'  => resoure_path(). '/words' 
+    'src' => resoure_path(). '/words',
 ];
