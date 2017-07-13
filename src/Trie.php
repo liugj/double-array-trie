@@ -76,9 +76,6 @@ class Trie
         if (!is_readable($filename)) {
             throw new Exception\FileUnableReadException();
         }
-        if (!is_writable($this->dest)) {
-            throw new Exception\FileUnableWriteException();
-        }
         $fp = fopen($filename, 'r');
         if (!$fp) {
             throw new Exception\FileOpenException();
