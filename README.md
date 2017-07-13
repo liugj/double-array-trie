@@ -1,7 +1,7 @@
 Double-Array-Trie
 ==============
 
-集成 Double Array Trie 到lumen中方便敏感词过滤
+Add `Double Array Trie` in `Lumen` to filter sensitive words
 
 ## Installation
 
@@ -11,7 +11,20 @@ You can install the package via composer:
 composer require liugj/double-array-trie
 ```
 
-You must add the Scout service provider and the package service provider in your `bootstrap/app.php` line 80 config:
+You must add the Trie service provider and the package service provider in your `bootstrap/app.php` line 80 config:
 
 ```php
 $app->register(Liugj\DoubleArray\TrieServiceProvider::class);
+
+
+```php
+You must add double-array-trie.php in  your `config` directory
+
+```
+return [
+   'dest' => resoure_path(). '/pingbi.dat',  //Double Array path
+   'src'  =>  resoure_path(). '/pingbi.txt'  //Sensitive words one word per line
+];
+```
+
+
