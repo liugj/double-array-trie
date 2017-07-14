@@ -116,6 +116,9 @@ class Trie
      */
     public function search(string $content = '') : array
     {
+        if (!$content) {
+            return [];
+        }
         file_exists($this->dest) ?: $this->saveFromFile($this->src);
         $this->load();
 
@@ -131,6 +134,9 @@ class Trie
      */
     public function searchAll(string $content = ''): array
     {
+        if (!$content) {
+            return [];
+        }
         file_exists($this->dest) ?: $this->saveFromFile($this->src);
         $this->load();
 
@@ -147,6 +153,9 @@ class Trie
      */
     public function replaceAll(string $content = '', string $replace = '*'): string
     {
+        if (!$content) {
+            return $content;
+        }
         $positions = $this->searchAll($content);
         if (!$positions) {
             return $content;

@@ -20,5 +20,5 @@ return [
     |
     */
 
-    'src' => resoure_path(). '/words',
+    'src' => resource_path(). '/words',
 ];
