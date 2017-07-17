@@ -20,7 +20,7 @@ class CleanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'data:clean {model}';
+    protected $signature = 'data:clean {model} {--offset=} {--limit=}';
 
     /**
      * The console command description.
@@ -37,7 +37,9 @@ class CleanCommand extends Command
     public function handle()
     {
         $class = $this->argument('model');
+        $offset = $this->option('offset');
+        $limit = $this->option('limit');
 
-        (new $class())->clean();
+        (new $class())->clean((int) $offset, $offset + $limit);
     }
 }
