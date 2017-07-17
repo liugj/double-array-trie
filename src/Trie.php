@@ -200,7 +200,7 @@ class Trie
     public function __destruct()
     {
         if ($this->tree) {
-            trie_filter_free($this->tree);
+            //trie_filter_free($this->tree);
         }
     }
 }
