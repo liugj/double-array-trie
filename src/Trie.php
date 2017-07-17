@@ -162,36 +162,36 @@ class Trie
         }
         $startPos = [];
         $endPos = [];
-
         foreach ($positions as list($start, $offset)) {
+            $end = $start + $offset;
             if (isset($startPos[$start])) {
                 $startPos[$start][] = $offset;
             } else {
                 $startPos[$start] = array($offset);
             }
-            $end = $start + $offset;
-
             if (isset($endPos[$end])) {
                 $endPos[$end][] = $offset;
             } else {
                 $endPos[$end] = array($offset);
             }
         }
+        $pattern = [];
         foreach ($endPos as $end => $values) {
             $max = max($values);
-            for ($i = $end - 1; $i >= $end - $max; $i--) {
-                $content[$i] = $replace;
-            }
+            $sub = substr($content, $end - $max, $max);
+            $pattern['#'.$sub. '#'] = str_pad('', mb_strlen($sub, 'utf-8'), '*');
         }
 
         foreach ($startPos as $start => $values) {
             $max = max($values);
-            for ($i = $start; $i < $start + $max; $i++) {
-                $content[$i] = $replace;
-            }
+            $sub = substr($content, $start, $max);
+            $pattern['#'.$sub. '#'] = str_pad('', mb_strlen($sub, 'utf-8'), '*');
         }
+        uksort($pattern, function ($a, $b) {
+            return mb_strlen($a, 'utf-8') <= mb_strlen($b, 'utf-8') ? true : false;
+        });
 
-        return $content;
+        return preg_replace(array_keys($pattern), $pattern, $content);
     }
 
     /**
